@@ -6,6 +6,8 @@
     <title>Behaviour Tree Framework</title>
     <authors>Simon Waite</authors>
     <owners>Simon Waite</owners>
+    <projectUrl>https://github.com/opless/SimonWaite.BehaviourTree/</projectUrl>
+    <licenseUrl>https://github.com/opless/SimonWaite.BehaviourTree/blob/master/LICENSE</licenseUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>No-nonsense BehaviourTree Library.</description>
     <releaseNotes>.</releaseNotes>
