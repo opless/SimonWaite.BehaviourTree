@@ -8,6 +8,8 @@ namespace SimonWaite.BehaviourTree.TestRunner
 		{
 			Console.WriteLine ("Hello World!");
 			var x = new SimonWaite.BehaviourTree.Test.Test ();
+
+			/*
 			x.SeqenceIntegerAssignment ();
 			x.SeqenceIntegerCompareEqual ();
 			x.SeqenceIntegerCompareNotEqual ();
@@ -30,7 +32,12 @@ namespace SimonWaite.BehaviourTree.TestRunner
 			x.RemapTestAsSuccess ();
 			x.RemapTestAsUnknown ();
 			x.RemapTestAsProcessing ();
-
+*/
+			x.SelectorTest0 ();
+			x.SelectorTest1 ();
+			x.SelectorTest2 ();
+			x.SelectorTest3 ();
+			x.SelectorTest4 ();
 			Console.WriteLine ("Done.");
 		}
 	}

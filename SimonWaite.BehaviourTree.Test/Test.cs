@@ -197,5 +197,69 @@ namespace SimonWaite.BehaviourTree.Test
 			var x = RemapAs (Result.Unknown);
 			Assert.AreEqual (Result.Success, x);
 		}
+
+
+		Result CreateSelector (params Result [] args)
+		{
+			IContext ctx = new SimpleContext ();
+
+			Node root = new SequenceNode ("Root", null, false);
+			foreach (var arg in args) {
+				root.Children.Add (new AlwaysCmd (arg));
+			}
+			Node p = root;
+			Console.Write ("BEGIN RUN [");
+			foreach (var arg in args) {
+				Console.Write ("{0}, ", arg);
+			}
+			Console.WriteLine ("]");
+			var ret = p.Tick (ctx);
+
+			Console.WriteLine ("END-RUN: {0}", ret);
+			return ret;
+		}
+
+		public void SelectorTestModel (Result r)
+		{
+			var x = CreateSelector (r);
+			Assert.AreEqual (r, x);
+
+			x = CreateSelector (Result.Success, r);
+			Assert.AreEqual (r, x);
+
+			x = CreateSelector (Result.Success, Result.Success, r);
+			Assert.AreEqual (r, x);
+
+			x = CreateSelector (Result.Success, r, Result.Success);
+			Assert.AreEqual (r, x);
+
+		}
+
+		[Test]
+		public void SelectorTest0 ()
+		{
+			SelectorTestModel (Result.Success);
+		}
+
+		[Test]
+		public void SelectorTest1 ()
+		{
+			SelectorTestModel (Result.Failure);
+		}
+		[Test]
+		public void SelectorTest2 ()
+		{
+			SelectorTestModel (Result.Error);
+		}
+		[Test]
+		public void SelectorTest3 ()
+		{
+			SelectorTestModel (Result.Processing);
+		}
+		[Test]
+		public void SelectorTest4 ()
+		{
+			SelectorTestModel (Result.Unknown);
+		}
 	}
 }

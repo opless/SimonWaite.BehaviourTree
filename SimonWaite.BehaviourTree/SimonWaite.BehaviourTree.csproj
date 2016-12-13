@@ -49,6 +49,7 @@
     <Compile Include="Comparison.cs" />
     <Compile Include="SimpleContext.cs" />
     <Compile Include="AlwaysCmd.cs" />
+    <Compile Include="FluentExtensions.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="SimonWaite.BehaviourTree.nuspec" />
