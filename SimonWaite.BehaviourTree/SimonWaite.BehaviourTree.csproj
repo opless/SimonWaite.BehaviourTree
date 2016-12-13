@@ -1,0 +1,57 @@
+﻿<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{9DDACE01-4AE2-481D-BA00-5592DC45A9D0}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>SimonWaite.BehaviourTree</RootNamespace>
+    <AssemblyName>SimonWaite.BehaviourTree</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug</OutputPath>
+    <DefineConstants>DEBUG;</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Result.cs" />
+    <Compile Include="IContext.cs" />
+    <Compile Include="Node.cs" />
+    <Compile Include="SequenceNode.cs" />
+    <Compile Include="Extensions.cs" />
+    <Compile Include="SelectorNode.cs" />
+    <Compile Include="Reason.cs" />
+    <Compile Include="ParallelNode.cs" />
+    <Compile Include="RemapNode.cs" />
+    <Compile Include="RepeaterNode.cs" />
+    <Compile Include="IntegerAssignmentCmd.cs" />
+    <Compile Include="IntegerChangeCmd.cs" />
+    <Compile Include="BaseDecorator.cs" />
+    <Compile Include="BaseComposite.cs" />
+    <Compile Include="BaseLeaf.cs" />
+    <Compile Include="IntegerCompareNode.cs" />
+    <Compile Include="Comparison.cs" />
+    <Compile Include="SimpleContext.cs" />
+    <Compile Include="AlwaysCmd.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="SimonWaite.BehaviourTree.nuspec" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+</Project>

@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>SimonWaite.BehaviourTree</id>
+    <version>1.0.0.0</version>
+    <title>Behaviour Tree Framework</title>
+    <authors>Simon Waite</authors>
+    <owners>Simon Waite</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>No-nonsense BehaviourTree Library.</description>
+    <releaseNotes>.</releaseNotes>
+    <copyright>Copyright 2016</copyright>
+    <tags>SimonWaite Simon Waite Behaviour Tree</tags>
+    <dependencies>
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="bin/Release/SimonWaite.BehaviourTree.dll" target="lib/net45" />
+  </files>
+</package>
