@@ -27,6 +27,9 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -49,10 +52,11 @@
     <Compile Include="Comparison.cs" />
     <Compile Include="SimpleContext.cs" />
     <Compile Include="AlwaysCmd.cs" />
-    <Compile Include="FluentExtensions.cs" />
+    <Compile Include="RootNode.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="SimonWaite.BehaviourTree.nuspec" />
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>

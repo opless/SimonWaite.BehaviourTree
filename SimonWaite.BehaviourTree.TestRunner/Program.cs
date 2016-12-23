@@ -1,4 +1,5 @@
 ﻿using System;
+using SimonWaite.BehaviourTree.Test;
 
 namespace SimonWaite.BehaviourTree.TestRunner
 {
@@ -6,38 +7,26 @@ namespace SimonWaite.BehaviourTree.TestRunner
 	{
 		public static void Main (string [] args)
 		{
-			Console.WriteLine ("Hello World!");
-			var x = new SimonWaite.BehaviourTree.Test.Test ();
+			Console.WriteLine ("*** COMPOSITE TESTS ***");
 
-			/*
-			x.SeqenceIntegerAssignment ();
-			x.SeqenceIntegerCompareEqual ();
-			x.SeqenceIntegerCompareNotEqual ();
-			x.SeqenceIntegerCompareGT ();
-			x.SeqenceIntegerCompareLT ();
-			x.SeqenceIntegerCompareLTE ();
-			x.SeqenceIntegerCompareGTE ();
 
-			Console.WriteLine ("\n-----\n");
+			SequenceTests.Test ();
+			SelectorTests.Test ();
+			ParallelTests.Test ();
 
-			x.AlwaysTestAsError ();
-			x.AlwaysTestAsFailure ();
-			x.AlwaysTestAsProcessing ();
-			x.AlwaysTestAsSuccess ();
-			x.AlwaysTestAsUnknown ();
+			Console.WriteLine ("*** DECORATOR TESTS ***");
 
-			Console.WriteLine ("\n-----\n");
-			x.RemapTestAsError ();
-			x.RemapTestAsFailure ();
-			x.RemapTestAsSuccess ();
-			x.RemapTestAsUnknown ();
-			x.RemapTestAsProcessing ();
-*/
-			x.SelectorTest0 ();
-			x.SelectorTest1 ();
-			x.SelectorTest2 ();
-			x.SelectorTest3 ();
-			x.SelectorTest4 ();
+			IntegerCompareTests.Test ();
+			RemapTests.Test ();
+			RepeaterTests.Test ();
+
+			Console.WriteLine ("*** LEAF TESTS ***");
+			AlwaysTests.Test ();
+			IntegerAssignmentTests.Test ();
+			IntegerChangeTests.Test ();
+
+
+			SerialisationRoundTripTests.Test ();
 			Console.WriteLine ("Done.");
 		}
 	}

@@ -29,7 +29,7 @@ namespace SimonWaite.BehaviourTree
 
 		void Init (string name = null, Node child = null, int count = 0, HashSet<Result> untilResult = null)
 		{
-			this.Name = name ?? Guid.NewGuid ().ToString ();
+			this.Name = name;
 			this.Children = new List<Node> ();
 			if (child != null)
 				this.Children.Add (child);
@@ -42,39 +42,53 @@ namespace SimonWaite.BehaviourTree
 		public override Result Tick (IContext ctx)
 		{
 			Validate ();
+			//TODO this appears not to work
+			Result r = Result.Unknown;
+			bool done = false;
 
-			// if we're (1) still counting, or (2) haven't found a desired result - process
-			if ((Count > 0 && iteration < Count) || (Count == 0 && UntilResult.Count > 0)) {
-				var state = ctx.Process (Children [0]);
-
-				// we have found our result
-				if (UntilResult.Count > 0 && UntilResult.Contains (state)) {
-					ctx.Log (this, Reason.DesiredResultAchieved, Children [0], state, Result.Success);
-					return Result.Success;
-				}
-
-				// not found yet, but lets keep running
-				if (Count == 0) {
-					ctx.Log (this, Reason.DesiredResultNotYetAchived, Children [0], state, iteration);
-
-				} else {
-					// assume iteration not finished yet
-					ctx.Log (this, Reason.IterationLimitNotYetReached, Children [0], state, iteration);
-				}
-				iteration++;
-				// Tag ctx to save state.
-				ctx.TaskSwitch ();
-				return Result.Processing;
-			} else if (Count > 0 && iteration >= Count && UntilResult.Count == 0) {
-				// passed our iteration limit.
-				ctx.Log (this, Reason.IterationLimitReached, Children [0], Result.Success);
-				return Result.Success;
-			} else {
-				// assume we're at our iteration limit and the desired result has not come to pass.
-				ctx.Log (this, Reason.DesiredResultNotAchieved, Children [0], Result.Failure);
-				return Result.Failure;
+			if (UntilResult.Count != 0) {
+				done = TickUntil (ctx, out r);
 			}
+			if (!done && Count > 0) {
+				done = TickCount (ctx, out r);
+			}
+			if (done) {
+				if (UntilResult.Count != 0 && Count <= iteration) {
+					ctx.Log (this, Reason.DesiredResultNotAchieved, Children [0], Result.Failure);
+					return Result.Failure;
+				}
+				return r;
+			}
+			ctx.TaskSwitch ();
+			return Result.Processing;
+
 		}
+		bool TickUntil (IContext ctx, out Result r)
+		{
+			var s = ctx.Process (Children [0]);
+			if (UntilResult.Contains (s)) {
+				r = Result.Success;
+				ctx.Log (this, Reason.DesiredResultAchieved, Children [0], s, Result.Success);
+				return true;
+			}
+			r = Result.Unknown;
+			ctx.Log (this, Reason.DesiredResultNotYetAchived, Children [0], s, iteration);
+			return false;
+		}
+		bool TickCount (IContext ctx, out Result r)
+		{
+			var s = ctx.Process (Children [0]);
+			iteration++;
+			if (iteration < Count) {
+				ctx.Log (this, Reason.IterationLimitNotYetReached, Children [0], s, iteration);
+				r = Result.Processing;
+				return false;
+			}
+			ctx.Log (this, Reason.IterationLimitReached, Children [0], Result.Success);
+			r = Result.Success;
+			return true;
+		}
+
 
 		public override void Validate ()
 		{

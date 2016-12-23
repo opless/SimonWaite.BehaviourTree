@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using Newtonsoft.Json;
 
 namespace SimonWaite.BehaviourTree
 {
 	public class RemapNode : BaseDecorator
 	{
-		public Dictionary<Result, Result> Mapping;
+		[JsonRequired]
+		public SortedDictionary<Result, Result> Mapping { get; set; }
 
 		public RemapNode ()
 		{
@@ -13,14 +15,14 @@ namespace SimonWaite.BehaviourTree
 		}
 
 
-		public RemapNode (string name = null, Node child = null, Dictionary<Result, Result> mapping = null)
+		public RemapNode (string name = null, Node child = null, SortedDictionary<Result, Result> mapping = null)
 		{
 			Init (name, child, mapping);
 		}
 
-		void Init (string name = null, Node child = null, Dictionary<Result, Result> mapping = null)
+		void Init (string name = null, Node child = null, SortedDictionary<Result, Result> mapping = null)
 		{
-			this.Name = name ?? Guid.NewGuid ().ToString ();
+			this.Name = name;
 			this.Children = new List<Node> ();
 			if (child != null)
 				this.Children.Add (child);
@@ -28,9 +30,9 @@ namespace SimonWaite.BehaviourTree
 			Mapping = mapping ?? DefaultMapping ();
 		}
 
-		Dictionary<Result, Result> DefaultMapping ()
+		SortedDictionary<Result, Result> DefaultMapping ()
 		{
-			var map = new Dictionary<Result, Result> ();
+			var map = new SortedDictionary<Result, Result> ();
 			foreach (var x in new Result [] {
 				Result.Error, Result.Processing, Result.Unknown}) {
 				map.Add (x, x);

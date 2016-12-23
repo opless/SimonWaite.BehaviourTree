@@ -1,22 +1,23 @@
 <?xml version="1.0"?>
-<package >
-  <metadata>
-    <id>SimonWaite.BehaviourTree</id>
-    <version>1.0.0.0</version>
-    <title>Behaviour Tree Framework</title>
-    <authors>Simon Waite</authors>
-    <owners>Simon Waite</owners>
-    <projectUrl>https://github.com/opless/SimonWaite.BehaviourTree/</projectUrl>
-    <licenseUrl>https://github.com/opless/SimonWaite.BehaviourTree/blob/master/LICENSE</licenseUrl>
-    <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <description>No-nonsense BehaviourTree Library.</description>
-    <releaseNotes>.</releaseNotes>
-    <copyright>Copyright 2016</copyright>
-    <tags>SimonWaite Simon Waite Behaviour Tree</tags>
-    <dependencies>
-    </dependencies>
-  </metadata>
-  <files>
-    <file src="bin/Release/SimonWaite.BehaviourTree.dll" target="lib/net45" />
-  </files>
+<package>
+	<metadata>
+		<id>SimonWaite.BehaviourTree</id>
+		<version>1.0.0.0</version>
+		<title>Behaviour Tree Framework</title>
+		<authors>Simon Waite</authors>
+		<owners>Simon Waite</owners>
+		<projectUrl>https://github.com/opless/SimonWaite.BehaviourTree/</projectUrl>
+		<licenseUrl>https://github.com/opless/SimonWaite.BehaviourTree/blob/master/LICENSE</licenseUrl>
+		<requireLicenseAcceptance>false</requireLicenseAcceptance>
+		<description>No-nonsense BehaviourTree Library.</description>
+		<releaseNotes>.</releaseNotes>
+		<copyright>Copyright 2016</copyright>
+		<tags>SimonWaite Simon Waite Behaviour Tree</tags>
+		<dependencies>
+			<dependency id="Newtonsoft.Json" version="9.0" />
+		</dependencies>
+	</metadata>
+	<files>
+		<file src="bin/Release/SimonWaite.BehaviourTree.dll" target="lib/net45" />
+	</files>
 </package>

@@ -1,16 +1,25 @@
 ﻿using System;
+using Newtonsoft.Json;
+
 namespace SimonWaite.BehaviourTree
 {
 	public class AlwaysCmd : BaseLeaf
 	{
 		public AlwaysCmd ()
 		{
+			Init ();
 		}
-
+		[JsonRequired]
 		public Result ReturnAs { get; set; }
 
-		public AlwaysCmd (Result returnAs)
+		public AlwaysCmd (Result returnAs, string name = null)
 		{
+			Init (returnAs, name);
+		}
+		void Init (Result returnAs = Result.Success, string name = null)
+		{
+			this.Name = name;
+			this.Children = null;
 			ReturnAs = returnAs;
 		}
 

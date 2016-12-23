@@ -9,11 +9,11 @@ namespace SimonWaite.BehaviourTree
 	/// </summary>
 	public class ParallelNode : BaseComposite
 	{
-		public int SuccessThreshold;
-		public int FailureThreshold;
-		public int ProcessingThreshold;
-		public int ErrorThreshold;
-		public int UnknownThreshold;
+		public int SuccessThreshold { get; set; }
+		public int FailureThreshold { get; set; }
+		public int ProcessingThreshold { get; set; }
+		public int ErrorThreshold { get; set; }
+		public int UnknownThreshold { get; set; }
 
 		const bool Randomized = true;
 
@@ -48,7 +48,7 @@ namespace SimonWaite.BehaviourTree
 			   int errorThreshold = 0,
 			   int unknownThreshold = 0)
 		{
-			this.Name = name ?? Guid.NewGuid ().ToString ();
+			this.Name = name;
 			this.Children = new List<Node> (children ?? new Node [0]);
 			list = null;
 			position = 0;

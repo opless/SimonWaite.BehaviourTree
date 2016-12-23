@@ -1,10 +1,14 @@
 ﻿using System;
+using Newtonsoft.Json;
+
 namespace SimonWaite.BehaviourTree
 {
 	public class IntegerChangeCmd : BaseLeaf
 	{
+		[JsonRequired]
 		public string VariableName { get; set; }
 
+		[JsonRequired]
 		public long Value { get; set; }
 
 		public IntegerChangeCmd ()
@@ -13,9 +17,10 @@ namespace SimonWaite.BehaviourTree
 			Value = 0;
 		}
 
-		public IntegerChangeCmd (string name, long value)
+		public IntegerChangeCmd (string varName, long value, string name = null)
 		{
 			Name = name;
+			VariableName = varName;
 			Value = value;
 		}
 

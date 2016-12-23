@@ -1,20 +1,32 @@
 ﻿using System;
+using System.Collections.Generic;
+using Newtonsoft.Json;
+
 namespace SimonWaite.BehaviourTree
 {
 	public class IntegerCompareNode : BaseDecorator
 	{
+		[JsonRequired]
 		public string VariableNameA { get; set; }
+		[JsonRequired]
 		public string VariableNameB { get; set; }
+		[JsonRequired]
 		public Comparison CompareAction { get; set; }
 
 		public IntegerCompareNode ()
 		{
-			VariableNameA = string.Empty;
-			VariableNameB = string.Empty;
-			CompareAction = Comparison.Equal;
+			Init ();
 		}
-		public IntegerCompareNode (string a, Comparison cmp, string b)
+		public IntegerCompareNode (string name, string a, Comparison cmp, string b)
 		{
+			Init (name, a, cmp, b);
+		}
+
+		void Init (string name = null, string a = "", Comparison cmp = Comparison.Equal, string b = "")
+		{
+			this.Name = name;
+			this.Children = new List<Node> ();
+
 			VariableNameA = a;
 			VariableNameB = b;
 			CompareAction = cmp;

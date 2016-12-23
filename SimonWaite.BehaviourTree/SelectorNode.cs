@@ -29,7 +29,7 @@ namespace SimonWaite.BehaviourTree
 
 		void Init (string name = null, IEnumerable<Node> children = null, bool randomized = false)
 		{
-			this.Name = name ?? Guid.NewGuid ().ToString ();
+			this.Name = name;
 			this.Children = new List<Node> (children ?? new Node [0]);
 			this.Randomized = randomized;
 			list = null;

@@ -1,0 +1,15 @@
+﻿Always			***DONE 
+IntegerAssignment ***DONE
+IntegerChange   ***DONE
+IntegerCompare	***DONE
+ParallelNode
+RemapNode		***DONE
+Repeater		***DONE
+SelectorNode	***DONE
+SequenceNode	***DONE
+
+SimpleContext
+
+Serialising.
+
+

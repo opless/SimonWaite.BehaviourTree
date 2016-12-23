@@ -1,21 +1,30 @@
 ﻿using System;
+using Newtonsoft.Json;
+
 namespace SimonWaite.BehaviourTree
 {
 	public class IntegerAssignmentCmd : BaseLeaf
 	{
+		[JsonRequired]
 		public string VariableName { get; set; }
-
+		[JsonRequired]
 		public long Value { get; set; }
 
 		public IntegerAssignmentCmd ()
 		{
-			VariableName = string.Empty;
-			Value = 0;
+			Init ();
 		}
 
-		public IntegerAssignmentCmd (string name, long value)
+		public IntegerAssignmentCmd (string varName, long value, string name = null)
 		{
-			VariableName = name;
+			Init (varName, value, name);
+		}
+
+		void Init (string varName = "", long value = 0, string name = null)
+		{
+			this.Name = name;
+			this.Children = null;
+			VariableName = varName;
 			Value = value;
 		}
 

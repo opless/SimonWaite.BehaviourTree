@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+﻿<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
@@ -31,7 +30,17 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Test.cs" />
+    <Compile Include="IntegerCompareTests.cs" />
+    <None Include="TODO.txt" />
+    <Compile Include="AlwaysTests.cs" />
+    <Compile Include="RemapTests.cs" />
+    <Compile Include="SelectorTests.cs" />
+    <Compile Include="SequenceTests.cs" />
+    <Compile Include="ParallelTests.cs" />
+    <Compile Include="SerialisationRoundTripTests.cs" />
+    <Compile Include="IntegerAssignmentTests.cs" />
+    <Compile Include="IntegerChangeTests.cs" />
+    <Compile Include="RepeaterTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
